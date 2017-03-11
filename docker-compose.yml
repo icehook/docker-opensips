@@ -1,0 +1,17 @@
+version: '2'
+services:
+  opensips:
+    restart: always
+    stdin_open: true
+    tty: true
+    image: icehook/opensips:2.2
+    volumes:
+      - /docker/data/opensips/var/log/persistent:/var/log/persistent
+      - /docker/data/opensips/var/log/opensips:/var/log/opensips
+      - /docker/data/opensips/etc/opensips:/etc/opensips
+    ulimits:
+      nofile:
+        soft: 64000
+        hard: 64000
+    ports:
+     - '5060:5060'
